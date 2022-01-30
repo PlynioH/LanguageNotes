@@ -1,0 +1,73 @@
+O PHP é basicamente uma formatação de texto que suporta HTML, CSS e JS, onde podemos escrever normalmente essas linguagens dentro de um arquivo .php
+
+#Print
+<?php
+echo "Hello World!<br>";
+?>
+
+Escreve uma mensagem em PHP na web.
+
+##Declarar Variável
+Para se criar uma variável em PHP é necessário adicionar $ + nome da variavel.
+<?php
+$txt = "Soma";
+$x = 5; //criou uma variavel
+$y = 10.5;
+$z = $x + $y; //somou duas variáveis
+
+echo $txt;
+echo "<br>";
+echo $x;
+echo "<br>";
+echo $y;
+echo "<br>";
+echo "A soma de x e y é: " . $z;  //utilizando "." podemos inserir mais de uma mensagem no print
+?>
+
+Também é possivel somar dessa forma
+echo $x + $y; //assim o echo realiza a soma automaticamente
+
+Variaveis criadas fora das funções(Global) só podem ser acessadas fora enquanto as variaveis de dentro das funções(Local) só podem ser acessadas de dentro.
+///Fora
+<?php
+$x = 5; // global scope
+ 
+function myTest() {
+  // using x inside this function will generate an error
+  echo "<p>Variable x inside function is: $x</p>";
+} 
+myTest();
+
+echo "<p>Variable x outside function is: $x</p>";
+?>
+
+
+///Dentro
+<?php
+function myTest() {
+  $x = 5; // local scope
+  echo "<p>Variable x inside function is: $x</p>";
+} 
+myTest();
+
+// using x outside the function will generate an error
+echo "<p>Variable x outside function is: $x</p>";
+?>
+
+Porém quando utilizados arrays as variáveis globais podem ser acessadas tanto dentro como fora das funções
+<?php
+$x = 5;
+$y = 10;
+
+function myTest() {
+  $GLOBALS['y'] = $GLOBALS['x'] + $GLOBALS['y'];
+}
+
+myTest();
+echo $y; // outputs 15
+?>
+
+É possivel criar uma variável local utilizando "static" antes da declaração, para a variável não ser apgada automáticamente após sua execução(que seria o acontecimento padrão)
+static $x = 0;
+
+Apesar de possuir um output print é muito melhor utilizar echo por conta de sua velocidade e volatilidade.

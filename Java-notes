@@ -1,0 +1,3 @@
+Dúvidas sobre as classes
+
+Só é possível acessar um atributo protected para mostrar o seu conteúdo atravez dos metodos get e set
